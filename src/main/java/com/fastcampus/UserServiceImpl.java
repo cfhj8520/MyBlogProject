@@ -9,7 +9,7 @@ import com.fastcampus.domain.User;
 import com.fastcampus.persistence.UserRepository;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository blogRepository;
