@@ -1,5 +1,7 @@
 package com.fastcampus;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +18,13 @@ public class UserServiceImpl {
 		blogRepository.save(user);
 	}
 	
-	public void updateBlog(User user) {
-		User findblog = blogRepository.findById(user.getUsername()).get();
+	public User getUser(User user) {
+		Optional<User> optional = blogRepository.findById(user.getUsername());
 		
-		
+		if(!optional.isEmpty()) {
+			return optional.get();
+		}else {
+			return null;
+		}
 	}
 }
