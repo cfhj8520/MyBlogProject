@@ -2,8 +2,8 @@ package com.fastcampus.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.fastcampus.domain.Blog;
+import com.fastcampus.domain.User;
 
-public interface BlogRepository extends CrudRepository<Blog, String>{
+public interface UserRepository extends CrudRepository<User, String>{
 
 }
