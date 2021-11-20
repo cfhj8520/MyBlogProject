@@ -14,10 +14,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository blogRepository;
 	
-	public void insertBlog(User user) {
-		blogRepository.save(user);
-	}
-	
 	public User getUser(User user) {
 		Optional<User> optional = blogRepository.findById(user.getUsername());
 		
