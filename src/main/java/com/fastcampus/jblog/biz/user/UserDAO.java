@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.springframework.stereotype.Repository;
+
 import com.fastcampus.jblog.biz.common.JDBCUtil;
 
-public class UserDAO {
+@Repository
+public class UserDAO{
 	private Connection conn;
 	private PreparedStatement stmt;
 	private ResultSet rs;
