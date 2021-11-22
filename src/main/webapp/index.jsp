@@ -23,7 +23,7 @@
 	<td width="70%" colspan="2">
 		<!-- 로그인 성공하지 않은 경우 -->
 		<c:if test="${user == null }">
-		<a href="loginView.do"><b>로그인</b></a>&nbsp;&nbsp;
+		<a href="loginView"><b>로그인</b></a>&nbsp;&nbsp;
 		</c:if>
 		<!-- 로그인 성공한 경우 -->
 		<c:if test="${user != null }">
