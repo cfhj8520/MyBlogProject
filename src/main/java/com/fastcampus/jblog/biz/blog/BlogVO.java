@@ -12,4 +12,6 @@ public class BlogVO {
 	private int user_id;
 	
 	private String user_name;
+	private String searchCondition;
+	private String searchKeyword;
 }
