@@ -32,7 +32,7 @@ public class BlogController {
 			blog.setUser_id(user.getUser_id());
 			
 			session.setAttribute("blogList", blogService.getBlogList(blog));
-			return "forward:/index.jsp";
+			return "redirect:/index.jsp";
 		}
 	}
 	
@@ -46,7 +46,7 @@ public class BlogController {
 		UserVO user = (UserVO) session.getAttribute("user");
 		vo.setUser_id(user.getUser_id());
 		blogService.insertBlog(vo);
-		return "forward:/getBlogList";
+		return "redirect:/getBlogList";
 	}
 
 }
