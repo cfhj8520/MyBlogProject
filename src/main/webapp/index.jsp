@@ -33,8 +33,8 @@
 	</td>
 </tr>
 <tr>
-	<td width="40%" height="20">&nbsp;</td>
-	<td width="60%"><input type="text" name="searchKeyword" size="65"><input type="submit" value="검색"></td>
+	<td width="36%" height="20">&nbsp;</td>
+	<td width="64%"><input type="text" name="searchKeyword" size="65"><input type="submit" value="검색"></td>
 </tr>
 <tr>
 	<td height="20" colspan="10" align="center" class="tdcontent">

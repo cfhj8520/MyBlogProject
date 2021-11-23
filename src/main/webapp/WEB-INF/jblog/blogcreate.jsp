@@ -19,8 +19,8 @@
 	</td>
 </tr>
 <tr>
-	<td width="40%" height="20">&nbsp;</td>
-	<td width="60%"><input type="text" name="title" size="65"><input type="submit" value="블로그 생성"></td>
+	<td width="35%" height="20" style="text-align:right;">블로그 제목 :&nbsp;</td>
+	<td width="65%"><input type="text" name="title" size="65"><input type="submit" value="블로그 생성"></td>
 </tr>
 <tr>
 	<td height="20" colspan="10" align="center" class="tdcontent">
