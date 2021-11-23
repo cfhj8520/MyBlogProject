@@ -29,7 +29,7 @@ public class UserDAO{
 				user.setUser_id(rs.getInt("USER_ID"));
 				user.setId(rs.getString("ID"));
 				user.setPassword(rs.getString("PASSWORD"));
-				user.setUserName(rs.getString("USER_NAME"));
+				user.setUser_name(rs.getString("USER_NAME"));
 				user.setRole(rs.getString("ROLE"));
 			}
 		} catch (Exception e) {
