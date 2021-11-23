@@ -37,8 +37,16 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/blogcreateView")
-	public String insertBlog(BlogVO vo) {
+	public String blogcreateView() {
 		return "blogcreate";
+	}
+	
+	@RequestMapping("/createBlog")
+	public String insertBlog(BlogVO vo, HttpSession session) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		vo.setUser_id(user.getUser_id());
+		blogService.insertBlog(vo);
+		return "forward:/getBlogList";
 	}
 
 }
