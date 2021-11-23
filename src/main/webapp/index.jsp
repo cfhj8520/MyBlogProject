@@ -26,8 +26,10 @@
 		<a href="loginView"><b>로그인</b></a>&nbsp;&nbsp;
 		</c:if>
 		<!-- 로그인 성공한 경우 -->
-		<c:if test="${user != null }">
+		<c:if test="${user != null && blogList.size() == 0}">
 		<a href="blogcreateView"><b>블로그등록</b></a>&nbsp;&nbsp;
+		</c:if>
+		<c:if test="${user != null && blogList.size() > 0}">
 		<a href="#"><b>내 블로그로 가기</b></a>
 		</c:if>
 	</td>
@@ -54,12 +56,12 @@
 	<td width="100" class="tablelabel">상태</td>
 	<td width="100" class="tablelabel">삭제</td>
 </tr>
-<c:forEach var="board" items="${blogList }">
+<c:forEach var="blog" items="${blogList }">
 <tr>
-	<td class="tablecontent">&nbsp;&nbsp;&nbsp;<a href="#">Gurum의 블로그</a></td>
-	<td class="tablecontent" align="center">채규태</td>
+	<td class="tablecontent">&nbsp;&nbsp;&nbsp;<a href="#">${blog.title }</a></td>
+	<td class="tablecontent" align="center">${blog.user_id }</td>
 	<td class="tablecontent" align="center"><img height="32" src="images/j2eelogo.jpg" border="0"></td>
-	<td class="tablecontent" align="center">운영</td>
+	<td class="tablecontent" align="center">${blog.status }</td>
 	<td class="tablecontent" align="center">
 		<a href="#"><img height="9"	src="images/delete.jpg" border="0"></a>
 	</td>
