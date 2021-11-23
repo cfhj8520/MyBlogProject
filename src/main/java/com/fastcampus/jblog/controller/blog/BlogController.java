@@ -22,16 +22,18 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/getBlogList")
-	public String getBlogList(UserVO vo, HttpSession session) {
+	public String getBlogList(BlogVO vo, HttpSession session) {
 		UserVO user = (UserVO) session.getAttribute("user");
 		
 		if(user.getId() == null) { 
 			return "redirect:/";
 		}else{
-			BlogVO blog = new BlogVO();
-			blog.setUser_id(user.getUser_id());
+			vo.setUser_id(user.getUser_id());
 			
-			session.setAttribute("blogList", blogService.getBlogList(blog));
+			if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
+			if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+			
+			session.setAttribute("blogList", blogService.getBlogList(vo));
 			return "redirect:/index.jsp";
 		}
 	}
