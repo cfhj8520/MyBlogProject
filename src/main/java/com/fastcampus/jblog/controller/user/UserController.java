@@ -26,9 +26,10 @@ public class UserController {
 		if(user != null) {
 			session.setAttribute("user", user);
 			
-			
+			return "forward:/";
+		}else {
+			return "redirect:/";
 		}
 		
-		return "redirect:/";
 	}
 }
