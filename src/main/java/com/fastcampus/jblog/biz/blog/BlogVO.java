@@ -10,4 +10,6 @@ public class BlogVO {
 	private int cnt_display_post;
 	private String status;
 	private int user_id;
+	
+	private String user_name;
 }
