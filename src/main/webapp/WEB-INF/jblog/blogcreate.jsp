@@ -10,7 +10,7 @@
 </head>
 <body>
 <center>
-<form action="#" method="post">
+<form action="createBlog" method="post">
 <table width="100%" height=320 border="0" cellpadding="0" cellspacing="0">
 <tr><td height=40 colspan="10">&nbsp;</td></tr>
 <tr>
