@@ -20,7 +20,7 @@ public class BlogDAO {
 	private String BLOG_GET = "select * from blog where blog_id = ?";
 	private String BLOG_LIST = "select * from blog";
 	private String BLOG_INSERT = "insert into blog(blog_id, title, tag, cnt_display_post, status, user_id)" + 
-								 "values((select nvl(max(blog_id), 0) + 1 from blog), ?, ?, 0, ?, ?)";
+								 "values((select nvl(max(blog_id), 0) + 1 from blog), ?, ?, ?, ?, ?)";
 	private String BLOG_UPDATE = "update blog set title = ?, tag = ?, cnt_display_post = ? where blog_id = ?";
 	private String BLOG_DELETE = "delete blog where blog_id = ?";
 	
@@ -29,9 +29,10 @@ public class BlogDAO {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BLOG_INSERT);
 			stmt.setString(1, vo.getTitle());
-			stmt.setString(2, vo.getTag());
-			stmt.setString(3, vo.getStatus());
-			stmt.setInt(4, vo.getUser_id());
+			stmt.setString(2, "미등록");
+			stmt.setInt(3, 3);
+			stmt.setString(4, "운영");
+			stmt.setInt(5, vo.getUser_id());
 			stmt.executeUpdate();
 			
 		}catch (Exception e){
