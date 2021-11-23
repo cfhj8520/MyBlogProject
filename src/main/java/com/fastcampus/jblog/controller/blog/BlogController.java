@@ -24,17 +24,14 @@ public class BlogController {
 	@RequestMapping("/getBlogList")
 	public String getBlogList(UserVO vo, HttpSession session) {
 		UserVO user = (UserVO) session.getAttribute("user");
-		System.out.println(user);
 		
 		if(user.getId() == null) { 
-			System.out.println("실패");
 			return "redirect:/";
 		}else{
 			BlogVO blog = new BlogVO();
 			blog.setUser_id(user.getUser_id());
 			
 			session.setAttribute("blogList", blogService.getBlogList(blog));
-			System.out.println("성공");
 			return "forward:/index.jsp";
 		}
 	}
