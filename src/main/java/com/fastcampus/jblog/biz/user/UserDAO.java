@@ -26,7 +26,7 @@ public class UserDAO{
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				user = new UserVO();
-				user.setUserId(rs.getInt("USER_ID"));
+				user.setUser_id(rs.getInt("USER_ID"));
 				user.setPassword(rs.getString("PASSWORD"));
 				user.setUserName(rs.getString("USER_NAME"));
 				user.setRole(rs.getString("ROLE"));
