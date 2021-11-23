@@ -27,7 +27,7 @@
 		</c:if>
 		<!-- 로그인 성공한 경우 -->
 		<c:if test="${user != null }">
-		<a href="#"><b>블로그등록</b></a>&nbsp;&nbsp;
+		<a href="blogcreateView"><b>블로그등록</b></a>&nbsp;&nbsp;
 		<a href="#"><b>내 블로그로 가기</b></a>
 		</c:if>
 	</td>
@@ -45,7 +45,7 @@
 </tr>
 </table>
 </form>
-
+<c:if test="${blogList.size() > 0 }">
 <table width="720" height="100" border="1" cellpadding="0" cellspacing="0">
 <tr>
 	<td width="320" class="tablelabel">블로그 제목</td>
@@ -54,7 +54,7 @@
 	<td width="100" class="tablelabel">상태</td>
 	<td width="100" class="tablelabel">삭제</td>
 </tr>
-
+<c:forEach var="board" items="${blogList }">
 <tr>
 	<td class="tablecontent">&nbsp;&nbsp;&nbsp;<a href="#">Gurum의 블로그</a></td>
 	<td class="tablecontent" align="center">채규태</td>
@@ -64,8 +64,9 @@
 		<a href="#"><img height="9"	src="images/delete.jpg" border="0"></a>
 	</td>
 </tr>
-
+</c:forEach>
 </table>
+</c:if>
 </center>
 </body>
 </html>
