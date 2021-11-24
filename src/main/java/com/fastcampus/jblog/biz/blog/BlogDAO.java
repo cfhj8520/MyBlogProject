@@ -17,8 +17,7 @@ public class BlogDAO {
 	private PreparedStatement stmt;
 	private ResultSet rs;
 	
-	private String BLOG_GET = "select * from blog where blog_id = ?";
-	private String BLOG_LIST = "select * from blog";
+	private String BLOG_GET = "select * from blog where user_id = ?";
 	private String BLOG_INSERT = "insert into blog(blog_id, title, tag, cnt_display_post, status, user_id)" + 
 								 "values((select nvl(max(blog_id), 0) + 1 from blog), ?, ?, ?, ?, ?)";
 	private String BLOG_UPDATE = "update blog set title = ?, tag = ?, cnt_display_post = ? where blog_id = ?";
@@ -89,7 +88,7 @@ public class BlogDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(BLOG_GET);
-			stmt.setInt(1, vo.getBlog_id());
+			stmt.setInt(1, vo.getUser_id());
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				blog = new BlogVO();
@@ -121,7 +120,7 @@ public class BlogDAO {
 			}else if(vo.getSearchCondition().equals("BLOGGER")) {
 				stmt = conn.prepareStatement(BLOG_LIST_BLOGGER);
 			}
-			stmt.setString(1, "");
+			stmt.setString(1, vo.getSearchKeyword());
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				BlogVO blog = new BlogVO();

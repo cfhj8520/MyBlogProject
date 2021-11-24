@@ -26,7 +26,7 @@ public class UserController {
 		if(user != null) {
 			session.setAttribute("user", user);
 			
-			return "redirect:getBlogList";
+			return "redirect:/";
 		}else {
 			return "redirect:/";
 		}

@@ -18,7 +18,20 @@ public class BlogController {
 	private BlogService blogService;
 
 	@RequestMapping("/")
-	public String index() {
+	public String index(HttpSession session) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		
+		if(user != null) {
+			BlogVO blog = new BlogVO();
+			blog.setUser_id(user.getUser_id());
+			
+			System.out.println(blogService.getBlog(blog));
+			if(blogService.getBlog(blog) != null)
+				session.setAttribute("hasBlog", true);
+			else
+				session.setAttribute("hasBlog", false);
+		}
+		
 		return "forward:/index.jsp";
 	}
 	
@@ -26,16 +39,19 @@ public class BlogController {
 	public String getBlogList(BlogVO vo, HttpSession session) {
 		UserVO user = (UserVO) session.getAttribute("user");
 		
-		if(user.getId() == null) { 
-			return "redirect:/";
-		}else{
-			vo.setUser_id(user.getUser_id());
-			
+		if(user == null) { 
 			if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
 			if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
 			
 			session.setAttribute("blogList", blogService.getBlogList(vo));
-			return "redirect:/index.jsp";
+			
+			return "redirect:/";
+		}else{
+			if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
+			if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+			
+			session.setAttribute("blogList", blogService.getBlogList(vo));
+			return "redirect:/";
 		}
 	}
 	
@@ -56,6 +72,11 @@ public class BlogController {
 	public String deleteBlog(BlogVO vo) {
 		blogService.deleteBlog(vo);
 		return "redirect:/getBlogList";
+	}
+	
+	@RequestMapping("/blogmainView")
+	public String blogmainView() {
+		return "blogmain";
 	}
 
 }
