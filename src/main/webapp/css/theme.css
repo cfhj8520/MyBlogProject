@@ -15,10 +15,10 @@ A.title:hover 		{ font-size:9pt; font-family:"±¼¸²Ã¼"; color:dc143c; text-decora
 .tdcontentright		{ background-color:#FFFFFF; font-size:9pt; font-family:"Tahoma"; height:10px;text-align:right; }
 
 .blogtitle			{ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
-							font-weight: bold; font-size:30pt; color:#FFFFFF;text-align:center; }
+							font-weight: bold; font-size:30pt; color:#696969;text-align:center; }
 .blogtag			{ font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
-							font-size:9pt; color:#FFFFFF;text-align:center; }
-.blogfooter		{ font-size:9pt; font-family:"Tahoma"; height:10px;text-align:center; }							
+							font-size:9pt; color:#696969;text-align:center; }
+.blogfooter		{ font-size:9pt; font-family:"Tahoma"; height:10px;text-align:center; }
 							
 .posttitle			{ font-size:14pt; color:#5A4EB1;font-weight: bold;height:24px; }
 .postdate			{ font-size:9pt; height:28px; }
