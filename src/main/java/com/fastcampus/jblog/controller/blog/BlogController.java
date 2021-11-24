@@ -25,7 +25,6 @@ public class BlogController {
 			BlogVO blog = new BlogVO();
 			blog.setUser_id(user.getUser_id());
 			
-			System.out.println(blogService.getBlog(blog));
 			if(blogService.getBlog(blog) != null)
 				session.setAttribute("hasBlog", true);
 			else
