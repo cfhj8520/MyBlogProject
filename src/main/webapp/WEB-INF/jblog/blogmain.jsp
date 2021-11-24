@@ -42,9 +42,8 @@
 			<table id="tdl2">
 				<tr>
 					<td class="tablecontent" align="center"><a href="#"><b>로그인</b></a></td>
-					<td class="tablecontent" align="center"><a href="#"><b>로그아웃</b></a></td>
-					<td class="tablecontent" align="center"><a href="#"><b>블로그
-								관리</b></a></td>
+					<td class="tablecontent" align="center"><a href="logout"><b>로그아웃</b></a></td>
+					<td class="tablecontent" align="center"><a href="#"><b>블로그 관리</b></a></td>
 				</tr>
 				<tr>
 					<td class="tablecontent" align="center"><img height="100"
