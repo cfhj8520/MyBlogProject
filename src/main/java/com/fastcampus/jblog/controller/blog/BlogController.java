@@ -97,9 +97,20 @@ public class BlogController {
 		blog.setBlog_id(blog.getUser_id());
 		blog.setTitle(vo.getTitle());
 		blog.setTag(vo.getTag());
+		blog.setStatus(vo.getStatus());
 		blog.setCnt_display_post(vo.getCnt_display_post());
 		blogService.updateBlog(blog);
 		
 		return "redirect:/blogmainView";
+	}
+	
+	@RequestMapping("/blogDeleteReq")
+	public String blogDeleteReq(HttpSession session) {
+		BlogVO blog = blogService.getBlog((BlogVO) session.getAttribute("blog"));
+		blog.setStatus("삭제요청");
+		System.out.println(blog);
+		blogService.updateBlog(blog);
+		
+		return "redirect:/";
 	}
 }
