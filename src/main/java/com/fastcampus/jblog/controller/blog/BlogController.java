@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fastcampus.jblog.biz.blog.BlogDAO;
 import com.fastcampus.jblog.biz.blog.BlogService;
 import com.fastcampus.jblog.biz.blog.BlogVO;
 import com.fastcampus.jblog.biz.user.UserVO;
@@ -78,8 +77,8 @@ public class BlogController {
 		return "blogmain";
 	}
 
-	@RequestMapping("/blogadminView")
-	public String blogadminView(BlogVO vo, HttpSession session) {
+	@RequestMapping("/blogadmin_basicView")
+	public String blogadmin_basicView(BlogVO vo, HttpSession session) {
 		BlogVO blog = blogService.getBlog(vo);
 		
 		if(blog != null) {
