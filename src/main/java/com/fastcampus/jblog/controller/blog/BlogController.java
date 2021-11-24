@@ -79,7 +79,27 @@ public class BlogController {
 	}
 
 	@RequestMapping("/blogadminView")
-	public String blogadminView() {
-		return "blogadmin_basic";
+	public String blogadminView(BlogVO vo, HttpSession session) {
+		BlogVO blog = blogService.getBlog(vo);
+		
+		if(blog != null) {
+			session.setAttribute("blog", blog);
+			
+			return "blogadmin_basic";
+		}else {
+			return "redirect:/";
+		}
+	}
+	
+	@RequestMapping("/updateBlog")
+	public String updateBlog(BlogVO vo, HttpSession session) {
+		BlogVO blog = (BlogVO) session.getAttribute("blog");
+		blog.setBlog_id(blog.getUser_id());
+		blog.setTitle(vo.getTitle());
+		blog.setTag(vo.getTag());
+		blog.setCnt_display_post(vo.getCnt_display_post());
+		blogService.updateBlog(blog);
+		
+		return "redirect:/blogmainView";
 	}
 }
