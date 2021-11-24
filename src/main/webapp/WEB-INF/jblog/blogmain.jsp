@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,9 +42,13 @@
 		<div style="width: 30%; float: right;">
 			<table id="tdl2">
 				<tr>
-					<td class="tablecontent" align="center"><a href="#"><b>로그인</b></a></td>
+					<c:if test="${user == null }">
+					<td class="tablecontent" align="center"><a href="loginView"><b>로그인</b></a></td>
+					</c:if>
+					<c:if test="${user != null }">
 					<td class="tablecontent" align="center"><a href="logout"><b>로그아웃</b></a></td>
-					<td class="tablecontent" align="center"><a href="#"><b>블로그 관리</b></a></td>
+					</c:if>
+					<td class="tablecontent" align="center"><a href="blogadminView"><b>블로그 관리</b></a></td>
 				</tr>
 				<tr>
 					<td class="tablecontent" align="center"><img height="100"
