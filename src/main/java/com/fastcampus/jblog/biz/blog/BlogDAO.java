@@ -20,7 +20,7 @@ public class BlogDAO {
 	private String BLOG_GET = "select * from blog where user_id = ?";
 	private String BLOG_INSERT = "insert into blog(blog_id, title, tag, cnt_display_post, status, user_id)" + 
 								 "values((select nvl(max(blog_id), 0) + 1 from blog), ?, ?, ?, ?, ?)";
-	private String BLOG_UPDATE = "update blog set title = ?, tag = ?, cnt_display_post = ? where blog_id = ?";
+	private String BLOG_UPDATE = "update blog set title = ?, tag = ?, cnt_display_post = ?, status = ? where blog_id = ?";
 	private String BLOG_DELETE = "delete blog where blog_id = ?";
 	
 	private String BLOG_LIST_TITLE   	= "select b.blog_id, b.cnt_display_post, b.status, b.title, b.tag, u.user_name from blog b, blog_user u where b.user_id=u.user_id and b.title like '%'||?||'%' order by b.title";
@@ -55,7 +55,8 @@ public class BlogDAO {
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getTag());
 			stmt.setInt(3, vo.getCnt_display_post());
-			stmt.setInt(4, vo.getBlog_id());
+			stmt.setString(4, vo.getStatus());
+			stmt.setInt(5, vo.getBlog_id());
 			stmt.executeUpdate();
 			
 		}catch (Exception e){
