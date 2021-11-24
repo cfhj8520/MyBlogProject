@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fastcampus.jblog.biz.blog.BlogDAO;
 import com.fastcampus.jblog.biz.blog.BlogService;
 import com.fastcampus.jblog.biz.blog.BlogVO;
 import com.fastcampus.jblog.biz.user.UserVO;
@@ -48,6 +49,12 @@ public class BlogController {
 		UserVO user = (UserVO) session.getAttribute("user");
 		vo.setUser_id(user.getUser_id());
 		blogService.insertBlog(vo);
+		return "redirect:/getBlogList";
+	}
+	
+	@RequestMapping("/deleteBlog")
+	public String deleteBlog(BlogVO vo) {
+		blogService.deleteBlog(vo);
 		return "redirect:/getBlogList";
 	}
 
