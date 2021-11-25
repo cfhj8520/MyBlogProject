@@ -12,6 +12,7 @@ import com.fastcampus.jblog.biz.blog.BlogVO;
 import com.fastcampus.jblog.biz.category.CategoryService;
 import com.fastcampus.jblog.biz.category.CategoryVO;
 import com.fastcampus.jblog.biz.post.PostService;
+import com.fastcampus.jblog.biz.post.PostVO;
 import com.fastcampus.jblog.biz.user.UserVO;
 
 @Controller
@@ -40,5 +41,21 @@ public class PostController {
 		model.addAttribute("categoryList", categoryService.getCategoryList(category));
 		
 		return "adminPost";
+	}
+	
+	@RequestMapping("createPost")
+	public String createPost(PostVO vo, HttpSession session, Model model) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		postService.insertPost(vo);
+		
+		return "redirect:/getBlog?user_id="+user.getUser_id();
+	}
+	
+	@RequestMapping("getPostList")
+	public String getPostList(PostVO vo, HttpSession session, Model model) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		postService.getPostList(vo);
+		
+		return "forward:/getBlog?user_id="+user.getUser_id();
 	}
 }
