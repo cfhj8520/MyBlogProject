@@ -10,8 +10,8 @@
 <body>
 	<center>
 		<div class="box">
-			<h1 class="blogtitle">블로그 제목</h1>
-			<h2 class="blogtag">tag</h2>
+			<h1 class="blogtitle">${blog.title }</h1>
+			<h2 class="blogtag">${blog.tag }</h2>
 		</div>
 	</center>
 	<hr>
@@ -48,7 +48,7 @@
 					<c:if test="${user != null }">
 					<td class="tablecontent" align="center"><a href="logout"><b>로그아웃</b></a></td>
 					</c:if>
-					<c:if test="${user.user_id == blog.blog_id }">
+					<c:if test="${user.id != null && user.user_id == blog.blog_id }">
 					<td class="tablecontent" align="center"><a href="blogadmin_basicView?user_id=${user.user_id }"><b>블로그 관리</b></a></td>
 					</c:if>
 				</tr>
