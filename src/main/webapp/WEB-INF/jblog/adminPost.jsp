@@ -28,95 +28,28 @@
 			</table>
 			<br>
 			<center>
-				<table width="720" border="1" cellpadding="0" cellspacing="0">
-					<tr height="30">
-						<td width="50" class="tablelabel">번호</td>
-						<td width="100" class="tablelabel">카테고리 명</td>
-						<td width="100" class="tablelabel">보이기 유형</td>
-						<td width="100" class="tablelabel">포스트 수</td>
-						<td width="300" class="tablelabel">설명</td>
-						<td width="100" class="tablelabel">삭제</td>
-					</tr>
-					<c:forEach var="category" items="${categoryList }">
+
+				<form action="createPost" method="post">
+					<table>
 						<tr>
-							<td class="tablecontent" align="center">${category.category_id }</td>
-							<td class="tablecontent"><a href="getCategoryList?category_id=${category.category_id }">${category.category_name }</a></td>
-							<td class="tablecontent" align="center">${category.display_type }</td>
-							<td class="tablecontent" align="center">${category.cnt_display_post }</td>
-							<td class="tablecontent">${category.description }</td>
-							<td class="tablecontent" align="center">
-								<c:if test="${category.category_name.equals('미분류') }">
-									삭제불가
-								</c:if>
-								<c:if test="${!category.category_name.equals('미분류') }">
-									<a href="deleteCategory?category_id=${category.category_id }">
-										<img height="9" src="images/delete.jpg" border="0">
-									</a>
-								</c:if>
+							<td align="right">제목 :&nbsp;</td>
+							<td><input type="text" name="category_name" size="50"></td>
+							<td>
+								<select name="category_id">
+									<c:forEach var="category" items="${categoryList }">
+										<option value="${category.category_id }">${category.category_name }</option>
+									</c:forEach>
+								</select>
 							</td>
 						</tr>
-					</c:forEach>
-				</table>
-				<br><hr><br>
-				<c:if test="${selected_category == null }">
-					<form action="createCategory" method="post">
-						<table>
-							<tr>
-								<td align="right">카테고리명 :&nbsp;</td>
-								<td><input type="text" name="category_name" size="50"></td>
-							</tr>
-							<tr>
-								<td align="right">보이기 유형 :&nbsp;</td>
-								<td>
-									<input type="radio" name="display_type" value="제목"  checked="checked">제목&nbsp;&nbsp; 
-									<input type="radio"	name="display_type" value="제목+내용">제목+내용
-								</td>
-							</tr>
-							<tr>
-								<td align="right">포스트 수 :&nbsp;</td>
-								<td><input type="text" name="cnt_display_post" size="5">개(1~20)</td>
-							</tr>
-							<tr>
-								<td align="right">설명 :&nbsp;</td>
-								<td><input type="text" name="description" size="70"></td>
-							</tr>
-						</table>
-						<input type="submit" value="카테고리 추가">
-					</form>
-				</c:if>
-				<c:if test="${selected_category != null }">
-					<form action="updateCategory" method="post">
-						<input type="hidden" name="category_id" value="${selected_category.category_id }">
-						<table>
-							<tr>
-								<td align="right">카테고리명 :&nbsp;</td>
-								<td><input type="text" name="category_name" size="50" value="${selected_category.category_name }"></td>
-							</tr>
-							<tr>
-								<td align="right">보이기 유형 :&nbsp;</td>
-								<td>
-									<c:if test="${selected_category.display_type.equals('제목') }">
-										<input type="radio" name="display_type" value="제목" checked="checked">제목&nbsp;&nbsp; 
-										<input type="radio"	name="display_type" value="제목+내용">제목+내용
-									</c:if>
-									<c:if test="${selected_category.display_type.equals('제목+내용') }">
-										<input type="radio" name="display_type" value="제목">제목&nbsp;&nbsp; 
-										<input type="radio"	name="display_type" value="제목+내용" checked="checked">제목+내용
-									</c:if>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">포스트 수 :&nbsp;</td>
-								<td><input type="text" name="cnt_display_post" size="5" value="${selected_category.cnt_display_post }">개(1~20)</td>
-							</tr>
-							<tr>
-								<td align="right">설명 :&nbsp;</td>
-								<td><input type="text" name="description" size="70" value="${selected_category.description }"></td>
-							</tr>
-						</table>
-						<input type="submit" value="카테고리 수정">
-					</form>
-				</c:if>
+						<tr>
+							<td align="right">내용 :&nbsp;</td>
+							<td><textarea name="content" rows="10" cols="70"></textarea></td>
+						</tr>
+					</table>
+					<input type="submit" value="카테고리 추가">
+				</form>
+
 			</center>
 		</div>
 		<div style="width: 30%; float: right;">
