@@ -20,7 +20,7 @@
 				<tr>
 					<td><a href="blogadmin_basicView">기본설정</a>&nbsp;</td>
 					<td><a href="getCategoryList">카테고리</a>&nbsp;</td>
-					<td><a href="blogadminView">글작성</a>&nbsp;</td>
+					<td><a href="createPost">글작성</a>&nbsp;</td>
 					<td><a href="blogDeleteReq">삭제요청</a>&nbsp;</td>
 				</tr>
 			</table>
