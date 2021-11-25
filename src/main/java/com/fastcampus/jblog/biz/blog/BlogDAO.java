@@ -132,6 +132,7 @@ public class BlogDAO {
 				blog.setCnt_display_post(rs.getInt("CNT_DISPLAY_POST"));
 				blog.setStatus(rs.getString("STATUS"));
 				blog.setUser_name(rs.getString("USER_NAME"));
+				blog.setUser_id(rs.getInt("USER_ID"));
 				blogList.add(blog);
 			}
 		} catch (Exception e){
