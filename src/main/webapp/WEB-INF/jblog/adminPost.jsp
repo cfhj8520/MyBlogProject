@@ -33,7 +33,7 @@
 					<table>
 						<tr>
 							<td align="right">제목 :&nbsp;</td>
-							<td><input type="text" name="category_name" size="50"></td>
+							<td><input type="text" name="title" size="50"></td>
 							<td>
 								<select name="category_id">
 									<c:forEach var="category" items="${categoryList }">
