@@ -53,7 +53,7 @@
 			<table id="tdl2">
 				<tr>
 					<td class="tablecontent" align="center"><a href="logout"><b>로그아웃</b></a></td>
-					<td class="tablecontent" align="center"><a href="blogmainView"><b>내 블로그 메인</b></a></td>
+					<td class="tablecontent" align="center"><a href="getPostList?blog_id=${blog.blog_id }"><b>내 블로그 메인</b></a></td>
 				</tr>
 			</table>
 		</div>

@@ -53,9 +53,8 @@ public class PostController {
 	
 	@RequestMapping("getPostList")
 	public String getPostList(PostVO vo, HttpSession session, Model model) {
-		UserVO user = (UserVO) session.getAttribute("user");
-		postService.getPostList(vo);
+		model.addAttribute("postList", postService.getPostList(vo));
 		
-		return "forward:/getBlog?user_id="+user.getUser_id();
+		return "forward:/getBlog?user_id="+vo.getBlog_id();
 	}
 }

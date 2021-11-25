@@ -115,7 +115,7 @@ public class BlogController {
 
 		blogService.updateBlog(blog);
 		
-		return "redirect:/getBlog?user_id="+user.getUser_id();
+		return "redirect:/getPostList?blog_id="+user.getUser_id();
 	}
 	
 	@RequestMapping("/blogDeleteReq")

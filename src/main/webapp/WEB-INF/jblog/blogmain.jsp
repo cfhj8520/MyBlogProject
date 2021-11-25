@@ -21,22 +21,22 @@
 	<div>
 		<div style="width: 60%; float: left;">
 			<table width="720" cellpadding="0" cellspacing="0">
-				<tr>
-					<td class="posttitle" align="left"><a href="#"><b>포스트
-								제목</b></a></td>
-					<td class="posttag" align="right"><a href="#"><b>edit</b></a>/<a
-						href="#"><b>del</b></a></td>
-				</tr>
-				<tr>
-					<td class="postdate" align="left">포스트 날짜</td>
-				</tr>
-				<tr>
-					<td class="postcontent" align="left">포스트 내용</td>
-				</tr>
-				<tr>
-					<td width="36%" height="20">&nbsp;</td>
-					<td class="postwriter" align="right">포스트 작성자</td>
-				</tr>
+				<c:forEach var="post" items="${postList }">
+					<tr>
+						<td class="posttitle" align="left"><a href="#"><b>${post.title }</b></a></td>
+						<td class="posttag" align="right"><a href="#"><b>edit</b></a>/<a href="#"><b>del</b></a></td>
+					</tr>
+					<tr>
+						<td class="postdate" align="left">${post.created_date }</td>
+					</tr>
+					<tr>
+						<td class="postcontent" align="left">${post.content }</td>
+					</tr>
+					<tr>
+						<td width="36%" height="20">&nbsp;<hr></td>
+						<td class="postwriter" align="right">blog.user_name<hr></td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
 		<div style="width: 30%; float: right;">

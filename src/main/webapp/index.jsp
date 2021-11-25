@@ -30,7 +30,7 @@
 		<a href="blogcreateView"><b>블로그등록</b></a>&nbsp;&nbsp;
 		</c:if>
 		<c:if test="${user != null && hasBlog}">
-		<a href="getBlog?user_id=${user.user_id}"><b>내 블로그로 가기</b></a>
+		<a href="getPostList?blog_id=${user.user_id }"><b>내 블로그로 가기</b></a>
 		</c:if>
 	</td>
 </tr>
@@ -60,7 +60,7 @@
 </tr>
 <c:forEach var="blog_one" items="${blogList }">
 <tr height="50">
-	<td class="tablecontent">&nbsp;&nbsp;&nbsp;<a href="getBlog?user_id=${blog_one.user_id}">${blog_one.title }</a></td>
+	<td class="tablecontent">&nbsp;&nbsp;&nbsp;<a href="getPostList?blog_id=${blog_one.user_id }">${blog_one.title }</a></td>
 	<td class="tablecontent" align="center">${blog_one.user_name }</td>
 	<td class="tablecontent" align="center"><img height="32" src="images/j2eelogo.jpg" border="0"></td>
 	<td class="tablecontent" align="center">${blog_one.status }</td>
