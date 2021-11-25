@@ -60,13 +60,13 @@
 </tr>
 <c:forEach var="blog" items="${blogList }">
 <tr height="50">
-	<td class="tablecontent">&nbsp;&nbsp;&nbsp;<a href="getBlog?blog_id=${blog.blog_id}">${blog.title }</a></td>
+	<td class="tablecontent">&nbsp;&nbsp;&nbsp;<a href="getBlog?user_id=${user.user_id}">${blog.title }</a></td>
 	<td class="tablecontent" align="center">${blog.user_name }</td>
 	<td class="tablecontent" align="center"><img height="32" src="images/j2eelogo.jpg" border="0"></td>
 	<td class="tablecontent" align="center">${blog.status }</td>
 	<c:if test="${user.role == 'ADMIN'}">
 	<td class="tablecontent" align="center">
-		<a href="deleteBlog?user_id=${blog.blog_id}"><img height="9"	src="images/delete.jpg" border="0"></a>
+		<a href="deleteBlog?blog_id=${blog.blog_id}"><img height="9"	src="images/delete.jpg" border="0"></a>
 	</td>
 	</c:if>
 </tr>
