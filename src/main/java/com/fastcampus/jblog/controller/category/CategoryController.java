@@ -45,4 +45,11 @@ public class CategoryController {
 		
 		return "redirect:/getCategoryList";
 	}
+	
+	@RequestMapping("/deleteCategory")
+	public String deleteCategory(CategoryVO vo) {
+		categoryService.deleteCategory(vo);
+		
+		return "redirect:/getCategoryList";
+	}
 }

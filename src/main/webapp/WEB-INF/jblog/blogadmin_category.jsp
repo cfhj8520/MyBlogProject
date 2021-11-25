@@ -44,7 +44,16 @@
 							<td class="tablecontent" align="center">${category.display_type }</td>
 							<td class="tablecontent" align="center">${category.cnt_display_post }</td>
 							<td class="tablecontent">${category.description }</td>
-							<td class="tablecontent" align="center"><a href="#"><img height="9" src="images/delete.jpg" border="0"></a></td>
+							<td class="tablecontent" align="center">
+								<c:if test="${category.category_name.equals('미분류') }">
+									삭제불가
+								</c:if>
+								<c:if test="${!category.category_name.equals('미분류') }">
+									<a href="deleteCategory?category_id=${category.category_id }">
+										<img height="9" src="images/delete.jpg" border="0">
+									</a>
+								</c:if>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
