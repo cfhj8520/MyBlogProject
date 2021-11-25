@@ -11,4 +11,6 @@ public class PostVO {
 	private String title;
 	private String content;
 	private Date created_date = new Date();
+	
+	private int blog_id;
 }
