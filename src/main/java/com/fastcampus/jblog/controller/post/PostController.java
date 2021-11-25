@@ -52,7 +52,7 @@ public class PostController {
 		UserVO user = (UserVO) session.getAttribute("user");
 		postService.insertPost(vo);
 		
-		return "redirect:/getBlog?user_id="+user.getUser_id();
+		return "redirect:/getPostList?blog_id="+user.getUser_id();
 	}
 	
 	@RequestMapping("getPostList")
@@ -67,6 +67,15 @@ public class PostController {
 		UserVO user = (UserVO) session.getAttribute("user");
 		
 		postService.updatePost(vo);
+		
+		return "redirect:/getPostList?blog_id="+user.getUser_id();
+	}
+	
+	@RequestMapping("deletePost")
+	public String deletePost(PostVO vo, HttpSession session) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		
+		postService.deletePost(vo);
 		
 		return "redirect:/getPostList?blog_id="+user.getUser_id();
 	}
