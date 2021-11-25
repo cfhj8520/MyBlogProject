@@ -24,7 +24,7 @@
 				<c:forEach var="post" items="${postList }">
 					<tr>
 						<td class="posttitle" align="left"><a href="#"><b>${post.title }</b></a></td>
-						<td class="posttag" align="right"><a href="#"><b>edit</b></a>/<a href="#"><b>del</b></a></td>
+						<td class="posttag" align="right"><a href="adminPost?post_id=${post.post_id }"><b>edit</b></a>/<a href="#"><b>del</b></a></td>
 					</tr>
 					<tr>
 						<td class="postdate" align="left">${post.created_date }</td>
