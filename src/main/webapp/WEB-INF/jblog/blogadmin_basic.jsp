@@ -9,8 +9,8 @@
 <body>
 	<center>
 		<div class="box">
-			<h1 class="blogtitle">블로그 제목</h1>
-			<h2 class="blogtag">tag</h2>
+			<h1 class="blogtitle">${blog.title }</h1>
+			<h2 class="blogtag">${blog.tag }</h2>
 		</div>
 	</center>
 	<hr><br>
