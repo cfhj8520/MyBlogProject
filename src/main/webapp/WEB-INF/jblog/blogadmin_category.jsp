@@ -40,7 +40,12 @@
 					<c:forEach var="category" items="${categoryList }">
 						<tr>
 							<td class="tablecontent" align="center">${category.category_id }</td>
-							<td class="tablecontent"><a href="getCategoryList?category_id=${category.category_id }">${category.category_name }</a></td>
+							<c:if test="${category.category_name.equals('미분류') }">
+								<td class="tablecontent">미분류</td>
+							</c:if>
+							<c:if test="${!category.category_name.equals('미분류') }">
+								<td class="tablecontent"><a href="getCategoryList?category_id=${category.category_id }">${category.category_name }</a></td>
+							</c:if>
 							<td class="tablecontent" align="center">${category.display_type }</td>
 							<td class="tablecontent" align="center">${category.cnt_display_post }</td>
 							<td class="tablecontent">${category.description }</td>
