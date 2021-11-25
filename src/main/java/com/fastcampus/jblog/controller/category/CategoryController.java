@@ -1,5 +1,7 @@
 package com.fastcampus.jblog.controller.category;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,15 @@ public class CategoryController {
 	@RequestMapping("/deleteCategory")
 	public String deleteCategory(CategoryVO vo) {
 		categoryService.deleteCategory(vo);
+		
+		return "redirect:/getCategoryList";
+	}
+	
+	@RequestMapping("/updateCategory")
+	public String updateCategory(CategoryVO vo, Model model) {
+		vo.setModified_date(new Date());
+		
+		categoryService.updateCategory(vo);
 		
 		return "redirect:/getCategoryList";
 	}

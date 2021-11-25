@@ -85,7 +85,8 @@
 					</form>
 				</c:if>
 				<c:if test="${selected_category != null }">
-					<form action="createCategory" method="post">
+					<form action="updateCategory" method="post">
+						<input type="hidden" name="category_id" value="${selected_category.category_id }">
 						<table>
 							<tr>
 								<td align="right">카테고리명 :&nbsp;</td>
@@ -113,7 +114,7 @@
 								<td><input type="text" name="description" size="70" value="${selected_category.description }"></td>
 							</tr>
 						</table>
-						<input type="submit" value="카테고리 추가">
+						<input type="submit" value="카테고리 수정">
 					</form>
 				</c:if>
 			</center>
