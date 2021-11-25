@@ -62,6 +62,13 @@ public class BlogController {
 		return "redirect:/getBlogList";
 	}
 	
+	@RequestMapping("/getBlog")
+	public String getBlog(BlogVO vo, Model model) {
+		model.addAttribute("blog", vo);
+		System.out.println(vo);
+		return "forward:/blogmainView";
+	}
+	
 	@RequestMapping("/blogmainView")
 	public String blogmainView() {
 		return "blogmain";

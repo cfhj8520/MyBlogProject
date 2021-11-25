@@ -48,7 +48,9 @@
 					<c:if test="${user != null }">
 					<td class="tablecontent" align="center"><a href="logout"><b>로그아웃</b></a></td>
 					</c:if>
+					<c:if test="${user.user_id == blog.blog_id }">
 					<td class="tablecontent" align="center"><a href="blogadmin_basicView?user_id=${user.user_id }"><b>블로그 관리</b></a></td>
+					</c:if>
 				</tr>
 				<tr>
 					<td class="tablecontent" align="center"><img height="100"
