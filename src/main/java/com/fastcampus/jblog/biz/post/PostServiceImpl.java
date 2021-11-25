@@ -9,31 +9,31 @@ import org.springframework.stereotype.Service;
 public class PostServiceImpl implements PostService {
 
 	@Autowired
-	private PostService postService;
+	private PostDAO postDAO;
 	
 	@Override
 	public void insertPost(PostVO vo) {
-		postService.insertPost(vo);
+		postDAO.insertPost(vo);
 	}
 
 	@Override
 	public void updatePost(PostVO vo) {
-		postService.updatePost(vo);
+		postDAO.updatePost(vo);
 	}
 
 	@Override
 	public void deletePost(PostVO vo) {
-		postService.deletePost(vo);
+		postDAO.deletePost(vo);
 	}
 
 	@Override
 	public PostVO getPost(PostVO vo) {
-		return postService.getPost(vo);
+		return postDAO.getPost(vo);
 	}
 
 	@Override
 	public List<PostVO> getPostList(PostVO vo) {
-		return postService.getPostList(vo);
+		return postDAO.getPostList(vo);
 	}
 
 }
