@@ -19,7 +19,7 @@
 			<table>
 				<tr>
 					<td><a href="blogadmin_basicView?user_id=${user.user_id }">기본설정</a>&nbsp;</td>
-					<td><a href="blogadminView">카테고리</a>&nbsp;</td>
+					<td><a href="getCategoryList?blog_id=${blog.blog_id }">카테고리</a>&nbsp;</td>
 					<td><a href="blogadminView">글작성</a>&nbsp;</td>
 					<td><a href="blogDeleteReq?user_id=${user.user_id }">삭제요청</a>&nbsp;</td>
 				</tr>
