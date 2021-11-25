@@ -26,8 +26,8 @@ public class PostController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@RequestMapping("createPost")
-	public String createPost(HttpSession session, Model model) {
+	@RequestMapping("adminPost")
+	public String adminPost(HttpSession session, Model model) {
 		UserVO user = (UserVO) session.getAttribute("user");
 		BlogVO blog = new BlogVO();
 		CategoryVO category = new CategoryVO();
