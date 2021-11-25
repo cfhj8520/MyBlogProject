@@ -28,7 +28,7 @@
 			</table>
 			<br>
 			<center>
-
+				<c:if test="${post == null }">
 				<form action="createPost" method="post">
 					<table>
 						<tr>
@@ -49,6 +49,31 @@
 					</table>
 					<input type="submit" value="카테고리 추가">
 				</form>
+				</c:if>
+				
+				<c:if test="${post != null }">
+				<form action="updatePost" method="post">
+					<input type="hidden" name="post_id" value="${post.post_id }">
+					<table>
+						<tr>
+							<td align="right">제목 :&nbsp;</td>
+							<td><input type="text" name="title" size="50" value="${post.title }"></td>
+							<td>
+								<select name="category_id">
+									<c:forEach var="category" items="${categoryList }">
+										<option value="${category.category_id }">${category.category_name }</option>
+									</c:forEach>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">내용 :&nbsp;</td>
+							<td><textarea name="content" rows="10" cols="70">${post.content }</textarea></td>
+						</tr>
+					</table>
+					<input type="submit" value="카테고리 수정">
+				</form>
+				</c:if>
 
 			</center>
 		</div>
