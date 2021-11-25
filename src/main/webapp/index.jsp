@@ -30,7 +30,7 @@
 		<a href="blogcreateView"><b>블로그등록</b></a>&nbsp;&nbsp;
 		</c:if>
 		<c:if test="${user != null && hasBlog}">
-		<a href="getBlog?blog_id=${user.user_id}"><b>내 블로그로 가기</b></a>
+		<a href="getBlog?user_id=${user.user_id}"><b>내 블로그로 가기</b></a>
 		</c:if>
 	</td>
 </tr>
@@ -66,7 +66,7 @@
 	<td class="tablecontent" align="center">${blog.status }</td>
 	<c:if test="${user.role == 'ADMIN'}">
 	<td class="tablecontent" align="center">
-		<a href="deleteBlog?blog_id=${blog.blog_id}"><img height="9"	src="images/delete.jpg" border="0"></a>
+		<a href="deleteBlog?user_id=${blog.blog_id}"><img height="9"	src="images/delete.jpg" border="0"></a>
 	</td>
 	</c:if>
 </tr>
