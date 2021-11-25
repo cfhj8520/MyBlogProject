@@ -28,7 +28,7 @@ public class PostController {
 	private CategoryService categoryService;
 	
 	@RequestMapping("adminPost")
-	public String adminPost(HttpSession session, Model model) {
+	public String adminPost(PostVO vo, HttpSession session, Model model) {
 		UserVO user = (UserVO) session.getAttribute("user");
 		BlogVO blog = new BlogVO();
 		CategoryVO category = new CategoryVO();
@@ -39,6 +39,10 @@ public class PostController {
 		
 		model.addAttribute("blog", blog);
 		model.addAttribute("categoryList", categoryService.getCategoryList(category));
+		
+		if(vo.getPost_id() != 0) {
+			model.addAttribute("post", postService.getPost(vo));
+		}
 		
 		return "adminPost";
 	}
@@ -56,5 +60,14 @@ public class PostController {
 		model.addAttribute("postList", postService.getPostList(vo));
 		
 		return "forward:/getBlog?user_id="+vo.getBlog_id();
+	}
+	
+	@RequestMapping("updatePost")
+	public String updatePost(PostVO vo, HttpSession session) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		
+		postService.updatePost(vo);
+		
+		return "redirect:/getPostList?blog_id="+user.getUser_id();
 	}
 }
