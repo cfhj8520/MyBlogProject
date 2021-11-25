@@ -40,7 +40,7 @@
 					<c:forEach var="category" items="${categoryList }">
 						<tr>
 							<td class="tablecontent" align="center">${category.category_id }</td>
-							<td class="tablecontent">${category.category_name }</td>
+							<td class="tablecontent"><a href="getCategoryList?category_id=${category.category_id }">${category.category_name }</a></td>
 							<td class="tablecontent" align="center">${category.display_type }</td>
 							<td class="tablecontent" align="center">${category.cnt_display_post }</td>
 							<td class="tablecontent">${category.description }</td>
@@ -58,31 +58,64 @@
 					</c:forEach>
 				</table>
 				<br><hr><br>
-
-				<form action="createCategory" method="post">
-					<table>
-						<tr>
-							<td align="right">카테고리명 :&nbsp;</td>
-							<td><input type="text" name="category_name" size="50"></td>
-						</tr>
-						<tr>
-							<td align="right">보이기 유형 :&nbsp;</td>
-							<td>
-								<input type="radio" name="display_type" value="제목"  checked="checked">제목&nbsp;&nbsp; 
-								<input type="radio"	name="display_type" value="제목+내용">제목+내용
-							</td>
-						</tr>
-						<tr>
-							<td align="right">포스트 수 :&nbsp;</td>
-							<td><input type="text" name="cnt_display_post" size="5">개(1~20)</td>
-						</tr>
-						<tr>
-							<td align="right">설명 :&nbsp;</td>
-							<td><input type="text" name="description" size="70"></td>
-						</tr>
-					</table>
-					<input type="submit" value="카테고리 추가">
-				</form>
+				<c:if test="${selected_category == null }">
+					<form action="createCategory" method="post">
+						<table>
+							<tr>
+								<td align="right">카테고리명 :&nbsp;</td>
+								<td><input type="text" name="category_name" size="50"></td>
+							</tr>
+							<tr>
+								<td align="right">보이기 유형 :&nbsp;</td>
+								<td>
+									<input type="radio" name="display_type" value="제목"  checked="checked">제목&nbsp;&nbsp; 
+									<input type="radio"	name="display_type" value="제목+내용">제목+내용
+								</td>
+							</tr>
+							<tr>
+								<td align="right">포스트 수 :&nbsp;</td>
+								<td><input type="text" name="cnt_display_post" size="5">개(1~20)</td>
+							</tr>
+							<tr>
+								<td align="right">설명 :&nbsp;</td>
+								<td><input type="text" name="description" size="70"></td>
+							</tr>
+						</table>
+						<input type="submit" value="카테고리 추가">
+					</form>
+				</c:if>
+				<c:if test="${selected_category != null }">
+					<form action="createCategory" method="post">
+						<table>
+							<tr>
+								<td align="right">카테고리명 :&nbsp;</td>
+								<td><input type="text" name="category_name" size="50" value="${selected_category.category_name }"></td>
+							</tr>
+							<tr>
+								<td align="right">보이기 유형 :&nbsp;</td>
+								<td>
+									<c:if test="${selected_category.display_type.equals('제목') }">
+										<input type="radio" name="display_type" value="제목" checked="checked">제목&nbsp;&nbsp; 
+										<input type="radio"	name="display_type" value="제목+내용">제목+내용
+									</c:if>
+									<c:if test="${selected_category.display_type.equals('제목+내용') }">
+										<input type="radio" name="display_type" value="제목">제목&nbsp;&nbsp; 
+										<input type="radio"	name="display_type" value="제목+내용" checked="checked">제목+내용
+									</c:if>
+								</td>
+							</tr>
+							<tr>
+								<td align="right">포스트 수 :&nbsp;</td>
+								<td><input type="text" name="cnt_display_post" size="5" value="${selected_category.cnt_display_post }">개(1~20)</td>
+							</tr>
+							<tr>
+								<td align="right">설명 :&nbsp;</td>
+								<td><input type="text" name="description" size="70" value="${selected_category.description }"></td>
+							</tr>
+						</table>
+						<input type="submit" value="카테고리 추가">
+					</form>
+				</c:if>
 			</center>
 		</div>
 		<div style="width: 30%; float: right;">

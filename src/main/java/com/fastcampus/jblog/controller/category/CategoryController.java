@@ -23,7 +23,7 @@ public class CategoryController {
 	private BlogService blogService;
 	
 	@RequestMapping("/getCategoryList")
-	public String getCategoryList(HttpSession session, Model model) {
+	public String getCategoryList(CategoryVO updateCategory, HttpSession session, Model model) {
 		UserVO user = (UserVO) session.getAttribute("user");
 		BlogVO blog = new BlogVO();
 		CategoryVO category = new CategoryVO();
@@ -32,6 +32,7 @@ public class CategoryController {
 		blog.setUser_id(user.getUser_id());
 		
 		model.addAttribute("categoryList", categoryService.getCategoryList(category));
+		model.addAttribute("selected_category", categoryService.getCategory(updateCategory));
 		model.addAttribute("blog", blogService.getBlog(blog));
 		
 		return "blogadmin_category";

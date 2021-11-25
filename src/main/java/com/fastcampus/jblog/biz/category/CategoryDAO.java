@@ -22,7 +22,7 @@ public class CategoryDAO {
 								   + "values(?, (select nvl(max(category_id), 0) + 1 from category), ?, ?, ?, ? , ?)";
 	private String CATEGORY_UPDATE = "update category set category_name = ?, display_type = ?, cnt_display_post = ?, description = ?, modified_date = ? where category_id = ?";
 	private String CATEGORY_DELETE = "delete from category where category_id = ?";
-	private String CATEGORY_GET = "select * from category where blog_id = ?";
+	private String CATEGORY_GET = "select * from category where category_id = ?";
 	private String CATEGORY_GETLIST = "select * from category where blog_id = ?";
 	
 	public void insertCategory(CategoryVO vo) {
@@ -79,7 +79,7 @@ public class CategoryDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(CATEGORY_GET);
-			stmt.setInt(1, vo.getBlog_id());
+			stmt.setInt(1, vo.getCategory_id());
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				category = new CategoryVO();
