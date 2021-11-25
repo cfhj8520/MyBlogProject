@@ -24,7 +24,9 @@
 				<c:forEach var="post" items="${postList }">
 					<tr>
 						<td class="posttitle" align="left"><a href="#"><b>${post.title }</b></a></td>
-						<td class="posttag" align="right"><a href="adminPost?post_id=${post.post_id }"><b>edit</b></a>/<a href="#"><b>del</b></a></td>
+						<c:if test="${user.id != null && user.user_id == blog.blog_id }">
+						<td class="posttag" align="right"><a href="adminPost?post_id=${post.post_id }"><b>edit</b></a>/<a href="deletePost?post_id=${post.post_id }"><b>del</b></a></td>
+						</c:if>
 					</tr>
 					<tr>
 						<td class="postdate" align="left">${post.created_date }</td>
