@@ -12,6 +12,6 @@ public class CategoryVO {
 	private String display_type;
 	private int cnt_display_post;
 	private String description;
-	private Date created_date;
+	private Date created_date = new Date();
 	private Date modified_date;
 }
