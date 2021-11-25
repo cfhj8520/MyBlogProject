@@ -34,7 +34,7 @@ public class CategoryDAO {
 			stmt.setString(3, vo.getDisplay_type());
 			stmt.setInt(4, vo.getCnt_display_post());
 			stmt.setString(5, vo.getDescription());
-			stmt.setDate(6, (java.sql.Date) vo.getCreated_date());
+			stmt.setDate(6, new java.sql.Date(vo.getCreated_date().getTime()));
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
