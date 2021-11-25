@@ -81,7 +81,12 @@ public class BlogController {
 	// 블로그 관리 기능 활성화를 위한 메소드
 	@RequestMapping("/getBlog")
 	public String getBlog(BlogVO vo, Model model) {
+		CategoryVO category = new CategoryVO();
+		
+		category.setBlog_id(vo.getBlog_id());
+		
 		model.addAttribute("blog", blogService.getBlog(vo));
+		model.addAttribute("categoryList", categoryService.getCategoryList(category));
 		return "forward:/blogmainView";
 	}
 	

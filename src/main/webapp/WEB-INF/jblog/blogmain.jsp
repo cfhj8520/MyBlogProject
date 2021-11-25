@@ -59,9 +59,11 @@
 				<tr>
 					<td class="categorytitle" align="center">카테고리</td>
 				</tr>
-				<tr>
-					<td class="categoryitem" align="center"><a href="#"><b>미분류</b></a></td>
-				</tr>
+				<c:forEach var="category" items="${categoryList }">
+					<tr>
+						<td class="categoryitem" align="center"><a href="getPostList?category_id=${category.category_id }&blog_id=${blog.blog_id}"><b> ${category.category_name }</b></a></td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
 
