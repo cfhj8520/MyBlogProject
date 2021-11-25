@@ -65,7 +65,6 @@ public class BlogController {
 	// 블로그 관리 기능 활성화를 위한 메소드
 	@RequestMapping("/getBlog")
 	public String getBlog(BlogVO vo, Model model) {
-		System.out.println(blogService.getBlog(vo));
 		model.addAttribute("blog", blogService.getBlog(vo));
 		return "forward:/blogmainView";
 	}
@@ -101,7 +100,7 @@ public class BlogController {
 
 		blogService.updateBlog(blog);
 		
-		return "forward:/blogmainView";
+		return "redirect:/getBlog?user_id="+user.getUser_id();
 	}
 	
 	@RequestMapping("/blogDeleteReq")
