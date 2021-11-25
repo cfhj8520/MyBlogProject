@@ -23,7 +23,8 @@ public class PostDAO {
 	private String POST_UPDATE = "update post set title = ?, category_id = ?, content = ? where post_id = ?";
 	private String POST_DELETE = "delete from post where post_id = ?";
 	private String POST_GET = "select * from post where post_id";
-	private String POST_GETLIST = "select * from post like category_id '%'||?||'%' order by post_id";
+	private String POST_GETLIST_CATEGORY = "select * from post where category_id = ? order by post_id";
+	private String POST_GETLIST_BLOG = "select p.post_id, p.category_id, p.title, p.content, p.created_date from post p, category c where c.category_id = p.category_id and c.blog_id = ? order by post_id";
 	
 	public void insertPost(PostVO vo) {
 		try {
@@ -95,8 +96,14 @@ public class PostDAO {
 		List<PostVO> postList = new ArrayList<PostVO>();
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(POST_GETLIST);
-			stmt.setInt(1, vo.getCategory_id());
+			
+			if(vo.getCategory_id() == 0) {
+				stmt = conn.prepareStatement(POST_GETLIST_BLOG);
+				stmt.setInt(1, vo.getBlog_id());
+			}else {
+				stmt = conn.prepareStatement(POST_GETLIST_CATEGORY);
+				stmt.setInt(1, vo.getCategory_id());
+			}
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				PostVO post = new PostVO();
