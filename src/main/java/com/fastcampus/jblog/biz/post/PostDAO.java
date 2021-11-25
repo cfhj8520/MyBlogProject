@@ -22,7 +22,7 @@ public class PostDAO {
 								+"values((select nvl(max(post_id), 0) + 1 from post), ?, ?, ?, ?)";
 	private String POST_UPDATE = "update post set title = ?, category_id = ?, content = ? where post_id = ?";
 	private String POST_DELETE = "delete from post where post_id = ?";
-	private String POST_GET = "select * from post where post_id";
+	private String POST_GET = "select * from post where post_id = ?";
 	private String POST_GETLIST_CATEGORY = "select * from post where category_id = ? order by post_id";
 	private String POST_GETLIST_BLOG = "select p.post_id, p.category_id, p.title, p.content, p.created_date from post p, category c where c.category_id = p.category_id and c.blog_id = ? order by post_id";
 	
@@ -77,11 +77,16 @@ public class PostDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(POST_GET);
+			stmt.setInt(1, vo.getPost_id());
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				post = new PostVO();
 				
-				
+				post.setPost_id(rs.getInt("POST_ID"));
+				post.setCategory_id(rs.getInt("CATEGORY_ID"));
+				post.setTitle(rs.getString("TITLE"));
+				post.setContent(rs.getString("CONTENT"));
+				post.setCreated_date(rs.getDate("CREATED_DATE"));
 			}
 		} catch (Exception e){
 			e.printStackTrace();
