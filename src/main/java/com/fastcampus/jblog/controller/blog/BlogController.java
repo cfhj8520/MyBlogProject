@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fastcampus.jblog.biz.blog.BlogService;
@@ -118,8 +119,11 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/blogDeleteReq")
-	public String blogDeleteReq(BlogVO vo, HttpSession session) {
-		BlogVO blog = blogService.getBlog(vo);
+	public String blogDeleteReq(HttpSession session) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		BlogVO blog = new BlogVO();
+		blog.setUser_id(user.getUser_id());
+		blog = blogService.getBlog(blog);
 		blog.setStatus("삭제요청");
 		
 		blogService.updateBlog(blog);
