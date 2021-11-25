@@ -90,16 +90,15 @@ public class BlogController {
 	}
 
 	@RequestMapping("/blogadmin_basicView")
-	public String blogadmin_basicView(BlogVO vo, Model model) {
-		BlogVO blog = blogService.getBlog(vo);
+	public String blogadmin_basicView(HttpSession session, Model model) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		BlogVO blog = new BlogVO();
 		
-		if(blog != null) {
-			model.addAttribute("blog", blog);
+		blog.setUser_id(user.getUser_id());
+		
+		model.addAttribute("blog", blogService.getBlog(blog));
 			
-			return "blogadmin_basic";
-		}else {
-			return "redirect:/";
-		}
+		return "blogadmin_basic";
 	}
 	
 	@RequestMapping("/updateBlog")
