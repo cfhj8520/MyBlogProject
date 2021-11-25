@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fastcampus.jblog.biz.blog.BlogService;
 import com.fastcampus.jblog.biz.blog.BlogVO;
+import com.fastcampus.jblog.biz.category.CategoryService;
+import com.fastcampus.jblog.biz.category.CategoryVO;
 import com.fastcampus.jblog.biz.user.UserVO;
 
 @Controller
@@ -16,6 +18,9 @@ public class BlogController {
 	
 	@Autowired
 	private BlogService blogService;
+	
+	@Autowired
+	private CategoryService categoryService;
 
 	@RequestMapping("/")
 	public String index(HttpSession session) {
@@ -53,6 +58,16 @@ public class BlogController {
 		UserVO user = (UserVO) session.getAttribute("user");
 		vo.setUser_id(user.getUser_id());
 		blogService.insertBlog(vo);
+		
+		vo = blogService.getBlog(vo);
+		CategoryVO category = new CategoryVO();
+		category.setBlog_id(vo.getUser_id());
+		category.setCategory_name("미분류");
+		category.setCnt_display_post(vo.getCnt_display_post());
+		category.setDisplay_type("제목+내용");
+		category.setDescription("모든 글을 등록할 수 있는 기본 카테고리입니다.");
+		categoryService.insertCategory(category);
+		
 		return "redirect:/getBlogList";
 	}
 	
