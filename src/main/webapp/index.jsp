@@ -47,7 +47,7 @@
 </tr>
 </table>
 </form>
-<c:if test="${blogList.size() > 0 }">
+<c:if test="${blogList != null }">
 <table width="720" border="1" cellpadding="0" cellspacing="0">
 <tr height="50">
 	<td width="320" class="tablelabel">블로그 제목</td>
