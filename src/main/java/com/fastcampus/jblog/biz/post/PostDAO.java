@@ -70,7 +70,7 @@ public class PostDAO {
 		}
 	}
 	
-	public PostVO getBlog(PostVO vo) {
+	public PostVO getPost(PostVO vo) {
 		PostVO post = null;
 		
 		try {
