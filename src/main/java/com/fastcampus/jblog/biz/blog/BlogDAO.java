@@ -23,9 +23,9 @@ public class BlogDAO {
 	private String BLOG_UPDATE = "update blog set title = ?, tag = ?, cnt_display_post = ?, status = ? where blog_id = ?";
 	private String BLOG_DELETE = "delete blog where blog_id = ?";
 	
-	private String BLOG_LIST_TITLE   	= "select b.blog_id, b.cnt_display_post, b.status, b.title, b.tag, u.user_name from blog b, blog_user u where b.user_id=u.user_id and b.title like '%'||?||'%' order by b.title";
-	private String BLOG_LIST_TAG     	= "select b.blog_id, b.cnt_display_post, b.status, b.title, b.tag, u.user_name from blog b, blog_user u where b.user_id=u.user_id and b.tag like '%'||?||'%' order by b.title";
-	private String BLOG_LIST_BLOGGER 	= "select b.blog_id, b.cnt_display_post, b.status, b.title, b.tag, u.user_name from blog b, blog_user u where b.user_id=u.user_id and u.user_name like '%'||?||'%' order by b.title";
+	private String BLOG_LIST_TITLE   	= "select b.blog_id, b.cnt_display_post, b.status, b.title, b.tag, u.user_name, b.user_id from blog b, blog_user u where b.user_id=u.user_id and b.title like '%'||?||'%' order by b.title";
+	private String BLOG_LIST_TAG     	= "select b.blog_id, b.cnt_display_post, b.status, b.title, b.tag, u.user_name, b.user_id from blog b, blog_user u where b.user_id=u.user_id and b.tag like '%'||?||'%' order by b.title";
+	private String BLOG_LIST_BLOGGER 	= "select b.blog_id, b.cnt_display_post, b.status, b.title, b.tag, u.user_name, b.user_id from blog b, blog_user u where b.user_id=u.user_id and u.user_name like '%'||?||'%' order by b.title";
 
 	
 	public void insertBlog(BlogVO vo) {
