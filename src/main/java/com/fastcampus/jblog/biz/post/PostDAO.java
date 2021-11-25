@@ -23,7 +23,7 @@ public class PostDAO {
 	private String POST_UPDATE = "update post set title = ?, category_id = ?, content = ? where post_id = ?";
 	private String POST_DELETE = "delete from post where post_id = ?";
 	private String POST_GET = "select * from post where post_id";
-	private String POST_GETLIST = "select * from post like '%'||?||'%' order by post_id";
+	private String POST_GETLIST = "select * from post like category_id '%'||?||'%' order by post_id";
 	
 	public void insertPost(PostVO vo) {
 		try {
@@ -32,7 +32,7 @@ public class PostDAO {
 			stmt.setInt(1, vo.getCategory_id());
 			stmt.setString(2, vo.getTitle());
 			stmt.setString(3, vo.getContent());
-			stmt.setDate(4, new java.sql.Date(vo.getDate().getTime()));
+			stmt.setDate(4, new java.sql.Date(vo.getCreated_date().getTime()));
 			stmt.executeUpdate();
 		}catch (Exception e){
 			e.printStackTrace();
@@ -96,10 +96,15 @@ public class PostDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(POST_GETLIST);
+			stmt.setInt(1, vo.getCategory_id());
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				PostVO post = new PostVO();
-				
+				post.setPost_id(rs.getInt("POST_ID"));
+				post.setCategory_id(rs.getInt("CATEGORY_ID"));
+				post.setTitle(rs.getString("TITLE"));
+				post.setContent(rs.getString("CONTENT"));
+				post.setCreated_date(rs.getDate("CREATED_DATE"));
 				postList.add(post);
 			}
 		} catch (Exception e){
