@@ -24,7 +24,7 @@ public class PostDAO {
 	private String POST_DELETE = "delete from post where post_id = ?";
 	private String POST_GET = "select * from post where post_id = ?";
 	private String POST_GETLIST_CATEGORY = "select * from post where category_id = ? order by post_id";
-	private String POST_GETLIST_BLOG = "select p.post_id, p.category_id, p.title, p.content, p.created_date from post p, category c where c.category_id = p.category_id and c.blog_id = ? order by post_id";
+	private String POST_GETLIST_BLOG = "select p.post_id, p.category_id, p.title, p.content, p.created_date from post p, category c where c.category_id = p.category_id and c.blog_id = ? order by post_id desc";
 	
 	public void insertPost(PostVO vo) {
 		try {
