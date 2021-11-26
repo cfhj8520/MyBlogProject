@@ -25,7 +25,7 @@
 					<tr>
 						<td class="posttitle" align="left"><a href="#"><b>${post.title }</b></a></td>
 						<c:if test="${user.id != null && user.user_id == blog.blog_id }">
-						<td class="posttag" align="right"><a href="adminPost?post_id=${post.post_id }"><b>edit</b></a>/<a href="deletePost?post_id=${post.post_id }"><b>del</b></a></td>
+						<td class="posttag" align="right"><a href="adminPost?post_id=${post.post_id }"><b>edit</b></a>/<a href="deletePost?post_id=${post.post_id }&category_id=${post_category.category_id }"><b>del</b></a></td>
 						</c:if>
 					</tr>
 					<tr>

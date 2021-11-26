@@ -88,6 +88,6 @@ public class PostController {
 		
 		postService.deletePost(vo);
 		
-		return "redirect:/getPostList?blog_id="+user.getUser_id();
+		return "redirect:/getPostList?category_id="+vo.getCategory_id()+"&blog_id="+user.getUser_id();
 	}
 }
