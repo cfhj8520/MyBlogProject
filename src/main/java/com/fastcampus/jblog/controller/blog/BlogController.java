@@ -69,7 +69,7 @@ public class BlogController {
 		category.setDescription("모든 글을 등록할 수 있는 기본 카테고리입니다.");
 		categoryService.insertCategory(category);
 		
-		return "redirect:/getBlogList";
+		return "redirect:/getPostList?blog_id="+user.getUser_id();
 	}
 	
 	@RequestMapping("/deleteBlog")
