@@ -31,9 +31,11 @@
 					<tr>
 						<td class="postdate" align="left">${post.created_date }</td>
 					</tr>
+					<c:if test="${post_category.display_type.equals('제목+내용') }">
 					<tr>
 						<td class="postcontent" align="left">${post.content }</td>
 					</tr>
+					</c:if>
 					<tr>
 						<td width="36%" height="20">&nbsp;<hr></td>
 						<td class="postwriter" align="right">blog.user_name<hr></td>

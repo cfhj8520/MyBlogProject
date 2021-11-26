@@ -57,6 +57,17 @@ public class PostController {
 	
 	@RequestMapping("getPostList")
 	public String getPostList(PostVO vo, HttpSession session, Model model) {
+		CategoryVO category = new CategoryVO();
+		
+		if(vo.getCategory_id() != 0) {
+			category.setCategory_id(vo.getCategory_id());
+			
+			model.addAttribute("post_category", categoryService.getCategory(category));
+		}else {
+			category.setDisplay_type("제목+내용");
+			model.addAttribute("post_category", category);
+		}
+		
 		model.addAttribute("postList", postService.getPostList(vo));
 		
 		return "forward:/getBlog?user_id="+vo.getBlog_id();
