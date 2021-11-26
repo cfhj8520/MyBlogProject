@@ -20,7 +20,7 @@
 <tr>
 	<td height="20" colspan="10" align="center" class="tdcontent">
 		아이디 : <input type="text" name="id" size="15">&nbsp;&nbsp;
-		패스워드 : <input type="text" name="password" size="15">
+		패스워드 : <input type="password" name="password" size="15">
 	</td>
 </tr>
 <tr>
