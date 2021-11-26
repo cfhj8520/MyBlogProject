@@ -61,7 +61,12 @@
 							<td>
 								<select name="category_id">
 									<c:forEach var="category" items="${categoryList }">
-										<option value="${category.category_id }">${category.category_name }</option>
+										<c:if test="${post.category_id == category.category_id }">
+											<option value="${category.category_id }" selected>${category.category_name }</option>
+										</c:if>
+										<c:if test="${post.category_id != category.category_id }">
+											<option value="${category.category_id }">${category.category_name }</option>
+										</c:if>
 									</c:forEach>
 								</select>
 							</td>
