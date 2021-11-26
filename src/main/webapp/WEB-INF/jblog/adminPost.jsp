@@ -47,7 +47,7 @@
 							<td><textarea name="content" rows="10" cols="70"></textarea></td>
 						</tr>
 					</table>
-					<input type="submit" value="카테고리 추가">
+					<input type="submit" value="확인">
 				</form>
 				</c:if>
 				
@@ -71,7 +71,7 @@
 							<td><textarea name="content" rows="10" cols="70">${post.content }</textarea></td>
 						</tr>
 					</table>
-					<input type="submit" value="카테고리 수정">
+					<input type="submit" value="수정하기">
 				</form>
 				</c:if>
 
