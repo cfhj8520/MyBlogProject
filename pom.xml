@@ -63,6 +63,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -82,4 +83,5 @@
 		</plugins>
 	</build>
 
+	<packaging>war</packaging>
 </project>
